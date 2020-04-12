@@ -78,14 +78,14 @@ vagrant ssh-config
 then copy the output to ssh-config
 
 ```
-Host default
+Host ubuntu-htb
   HostName 127.0.0.1
   User vagrant
   Port 2222
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
   PasswordAuthentication no
-  IdentityFile /Users/user/Code/scratch/vagrant_docker/.vagrant/machines/default/virtualbox/private_key
+  IdentityFile /Users/user/Code/scratch/vagrant_htb/ubuntu-htb/.vagrant/machines/default/virtualbox/private_key
   IdentitiesOnly yes
   LogLevel FATAL
 ```
@@ -96,7 +96,6 @@ If hosting a service on a port tunnel if to host machine.
 ```
 ssh -i ./.vagrant/machines/default/virtualbox/private_key -l vagrant -o StrictHostKeyChecking=no -p 2222 -L 8080:127.0.0.1:8080 -N 127.0.0.1 -v
 ```
-
 
 ## Troubleshooting
 
