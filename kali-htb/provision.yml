@@ -25,17 +25,17 @@
     #   apt:
     #     upgrade: dist
 
-    # - name: Clone dotfiles
-    #   git:
-    #     repo: 'https://github.com/chrisguest75/default_dotfiles.git'
-    #     dest: /home/vagrant/Code/default_dotfiles
-    #   become_user: vagrant
+    - name: Clone dotfiles
+      git:
+        repo: 'https://github.com/chrisguest75/default_dotfiles.git'
+        dest: /home/vagrant/Code/default_dotfiles
+      become_user: vagrant
 
     # - name: Install dotfiles
     #   shell: /home/vagrant/Code/default_dotfiles/install.sh 
     #   become_user: vagrant
 
-  # roles:
+  roles:
     # - role: "nickjj.docker"
     #   tags: ["docker"]
     #   vars:
@@ -44,10 +44,10 @@
     #     docker__version: "18.09.3"
     #     #docker__version: "18.06.1"
 
-    # - role: gantsign.oh-my-zsh
-    #   users:
-    #     - username: vagrant
-    #       oh_my_zsh:
-    #         theme: robbyrussell
-    #         plugins:
-    #           - git        
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: vagrant
+          oh_my_zsh:
+            theme: robbyrussell
+            plugins:
+              - git        

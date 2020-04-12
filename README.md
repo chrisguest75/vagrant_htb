@@ -99,3 +99,14 @@ ssh -i ./.vagrant/machines/default/virtualbox/private_key -l vagrant -o StrictHo
 
 ## Troubleshooting
 
+### VPN not working
+[Forum](https://forum.hackthebox.eu/discussion/comment/68902#Comment_68902)
+```txt
+I have been using the EU server for a month. US servers seems overload and try to change to TCP.
+
+In your ovpn file...
+Change 'proto udp' to 'proto tcp'
+Change 'remote {serverAddressHere} 1337' to 'remote {serverAddressHere} 443'
+Change '< tls-auth>' to '< tls-crypt>'
+Change '< /tls-auth>' to '< /tls-crypt>'
+```
