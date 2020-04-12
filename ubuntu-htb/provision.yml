@@ -19,6 +19,7 @@
           - bash-completion
           - nmap
           - openvpn
+          - smbclient
 
     - name: Update all packages to the latest version
       apt:
