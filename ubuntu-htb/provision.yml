@@ -1,0 +1,52 @@
+# provision.yml
+
+- name: Provision machine
+  hosts: "all"
+  become: true
+  
+  tasks:
+    - name: get hostname
+      shell: hostname
+      register: hostname
+
+    - name: apt install basics
+      apt: 
+        pkg:
+          - curl 
+          - git 
+          - zsh
+          - nano
+          - bash-completion
+          - nmap
+          - openvpn
+
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+
+    - name: Clone dotfiles
+      git:
+        repo: 'https://github.com/chrisguest75/default_dotfiles.git'
+        dest: /home/vagrant/Code/default_dotfiles
+      become_user: vagrant
+
+    - name: Install dotfiles
+      shell: /home/vagrant/Code/default_dotfiles/install.sh 
+      become_user: vagrant
+
+  roles:
+    - role: "nickjj.docker"
+      tags: ["docker"]
+      vars:
+        docker__edition: "ce"
+        docker__channel: ["stable"]
+        docker__version: "18.09.3"
+        #docker__version: "18.06.1"
+
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: vagrant
+          oh_my_zsh:
+            theme: robbyrussell
+            plugins:
+              - git        
