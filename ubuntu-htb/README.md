@@ -4,6 +4,10 @@ Build an ubuntu hack the box
 ## Prequisites
 [Vagrant Setup](../README.md)
 
+## TODO
+* Vagrant user allows non-ssh login with default password
+* Solve the lynis issues
+
 ## Build the VM
 
 ### Configure Network
@@ -18,7 +22,7 @@ Avoid adding to home network to prevent bridging.
 sudo openvpn /vagrant_data/<user>.ovpn
 ```
 
-### Test 
+### Test HTB
 ```sh
 nmap -sV 10.10.10.0/24
 smbclient -N -L \\\\10.10.10.27\\

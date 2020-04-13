@@ -12,6 +12,10 @@
     - name: apt install basics
       apt: 
         pkg:
+          - debian-goodies
+          - needrestart
+          - debsecan
+          - debsums
           - curl 
           - git 
           - zsh
@@ -20,6 +24,7 @@
           - nmap
           - openvpn
           - smbclient
+          - lynis
 
     - name: Update all packages to the latest version
       apt:
