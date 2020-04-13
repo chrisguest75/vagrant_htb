@@ -7,6 +7,7 @@ Vagrant.require_version ">= 2.2.7"
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+  config.env.enable
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
@@ -90,4 +91,12 @@ Vagrant.configure("2") do |config|
      systemctl restart sshd.service
   SHELL
 
+  password = ENV['PASSWORD'] 
+  config.vm.provision "shell", args: password, inline: <<-SHELL
+    if [[ -z $1 ]];then
+      echo "No password defined in .env"
+      exit 1
+    fi
+    echo -e "$1\n$1" | passwd vagrant
+  SHELL
 end

@@ -8,7 +8,11 @@ Build an ubuntu hack the box
 * Vagrant user allows non-ssh login with default password
 * Solve the lynis issues
 
-## Build the VM
+## Build the VM 
+```sh
+vagrant plugin install vagrant-env 
+echo "PASSWORD=$(uuidgen)" > .env 
+```
 
 ### Configure Network
 Avoid adding to home network to prevent bridging. 
